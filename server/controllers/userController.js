@@ -88,7 +88,19 @@ export const login = async (req, res) => {
         console.error('Login Error:', error.message);
         res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
-};
+}
 
+//check Auth  /api/user/is-auth
 
+export const isAuth = async(req,res)=>{
+    try {
+        const {userId} = req.body;
+        const user = await User.findById(userId).select("-password")
+        return res.json({success: true, user})
+        
+    } catch (error) {
+        console.error('Login Error:', error.message);
+        res.status(500).json({ success: false, message: error.message });
+    }
+}
 
