@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { useAppContext } from "../context/AppContext"; // ✅ Fixed typo
+import { useAppContext } from "../context/AppContext"; 
 import { assets, dummyAddress } from "../assets/assets";
 
 const Cart = () => {
-  const { products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, navigate, getCartAmount } = useAppContext(); // ✅ Fixed typo `rmoveFromCart` → `removeFromCart`
+  const { products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, navigate, getCartAmount ,axios} = useAppContext(); 
   const [cartArray, setCartArray] = useState([]);
-  const [addresses, setAddresses] = useState(dummyAddress);
+  const [addresses, setAddresses] = useState([]);
   const [showAddress, setShowAddress] = useState(false);
-  const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0]);
+  const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentOption, setPaymentOption] = useState("COD");
 
   const getCart = () => {
@@ -19,6 +19,16 @@ const Cart = () => {
     }
     setCartArray(tempArray);
   };
+
+  const getUserAddress = async ()=>{
+    try {
+      
+    } catch (error) {
+      
+    }
+  }
+
+
 
   const placeOrder = async () => {};
 
