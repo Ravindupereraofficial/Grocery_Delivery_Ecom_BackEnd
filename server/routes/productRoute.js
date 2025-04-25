@@ -1,13 +1,13 @@
-import { json } from "express"
+import express from "express"; // Import express
 import { upload } from "../configs/multer.js";
 import authSeller from "../middlewares/authSeller.js";
 import { addProduct, changeStock, productById, productList } from "../controllers/ProductController.js";
 
 const productRouter = express.Router();
 
-productRouter.post('/add', upload.array([images]), authSeller, addProduct)
-productRouter.get('/list',productList)
-productRouter.get('/id',productById)
-productRouter.post('/stock',authSeller, changeStock)
+productRouter.post('/add', upload.array("images"), authSeller, addProduct); // Fixed 'images' usage
+productRouter.get('/list', productList);
+productRouter.get('/id', productById);
+productRouter.post('/stock', authSeller, changeStock);
 
 export default productRouter;

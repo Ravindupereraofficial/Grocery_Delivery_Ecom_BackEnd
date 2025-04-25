@@ -1,6 +1,8 @@
 import { json } from "express"
 import {v2 as cloudinary} from "cloudinary"
-import Product from "../models/Product"
+import Product from '../models/Product.js';
+
+
 
 
 
@@ -8,7 +10,8 @@ import Product from "../models/Product"
 export const addProduct = async (req, res)=>{
 
     try {
-        let productData = json.parse(req.body.productData) 
+        let productData = JSON.parse(req.body.productData)
+
 
         const images = req.files
 
@@ -19,7 +22,8 @@ export const addProduct = async (req, res)=>{
             })
         )
 
-        await Product,create({...productData, image: imagesUrl})
+        await Product.create({ ...productData, image: imagesUrl })
+
 
         res.json({success: true, message: "Product Added"})
 
